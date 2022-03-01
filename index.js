@@ -1,16 +1,20 @@
 import express from "express";
-import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
+import 'dotenv/config'
 import usersRoute from "./route/endpoints.js";
 
 
-const app = express()
+const app = express();
 
-app.use('/api', usersRoute)
+app.use(express.json());
+app.use(express.urlencoded({ extended: false}));
+// app.use(cors())
 
-app.use(bodyParser.json())
-app.use(cors())
+app.use('/api', usersRoute);
+
+
+// app.use(cors());
 
 const CONNECTION_URL = "mongodb+srv://younghallaji:Muthorlib123@cluster0.ftlcd.mongodb.net/micseran?retryWrites=true&w=majority";
 

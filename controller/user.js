@@ -12,11 +12,14 @@ export const allUsers = async(req, res) => {
 
 export const register = async(req, res) => {
     const user = req.body;
+    console.log(user);
+    res.status(200).json({message:'successful'})
     const newUser = new registerUser(user);
     try {
         await newUser.save()
     } catch (error) {
         res.status(409).json({message:error.message})
     }
-    res.send('New Registration made')
+    // if(!user)
+    // res.send('New Registration made')
 }
